@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <!-- <div id="hellos"></div> -->
+    <svg width="1000" height="1000"></svg>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+      let data1 = [
+        { text: "Hello World 1", size: 10 },
+        { text: "Hello World 2", size: 20 },
+      ];
+
+      let data = [
+        { cx: 400, cy: 600, r: 150, fill: "green", stroke: "black" },
+        { cx: 100, cy: 200, r: 50, fill: "blue", stroke: "purple" },
+        { cx: 650, cy: 100, r: 100, fill: "red", stroke: "orange" },
+        { cx: 900, cy: 300, r: 100, fill: "purple", stroke: "blue" },
+      ];
+
+      let hellos = d3.select("svg");
+
+      hellos
+        .selectAll("circle")
+        .data(data)
+        .enter()
+        .append("circle")
+        .attr("cx", (d) => {
+          console.log(d);
+          return d.cx;
+        })
+        .attr("cy", (d) => d.cy)
+        .attr("r", (d) => d.r)
+        .style("fill", (d) => d.fill)
+        .style("stroke", (d) => d.stroke);
+    </script>
+  </body>
+</html>
